@@ -1,0 +1,8 @@
+CompileFlags:                     # Tweak the parse settings
+  Add: [-Wall,-Werror,-O,-fno-omit-frame-pointer,-ggdb,-gdwarf-2,-DSOL_UTIL,-DLAB_UTIL,-MD,-mcmodel=medany,-ffreestanding,-fno-common,-nostdlib,-mno-relax,-I.,-fno-stack-protector,-fno-pie,-no-pie]
+  Compiler: riscv64-linux-gnu-gcc              # Change argv[0] of compile flags to `clang++`
+
+
+
+
+

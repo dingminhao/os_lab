@@ -2,7 +2,6 @@
 #include "kernel/stat.h"
 #include "user/user.h"
 #include "kernel/fs.h"
-
 char*
 fmtname(char *path)
 {
@@ -33,16 +32,17 @@ ls(char *path)
   if((fd = open(path, 0)) < 0){
     fprintf(2, "ls: cannot open %s\n", path);
     return;
+
   }
 
   if(fstat(fd, &st) < 0){
-    fprintf(2, "ls: cannot stat %s\n", path);
+    fprintf(2, "ls: ca/* nnot stat %s\n", path);
     close(fd);
     return;
   }
 
   switch(st.type){
-  case T_DEVICE:
+  case T_DEVICE: 
   case T_FILE:
     printf("%s %d %d %l\n", fmtname(path), st.type, st.ino, st.size);
     break;
