@@ -25,9 +25,6 @@ void primes(int p[]){
   }
 }
 
-
-
-
 int main(int arc, char *argv[]){
   
 // fork() pipe()
