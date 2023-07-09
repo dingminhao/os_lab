@@ -26,6 +26,18 @@ extern char trampoline[]; // trampoline.S
 // must be acquired before any p->lock.
 struct spinlock wait_lock;
 
+int get_freeproc(){
+  struct proc *p;
+  int free_num = 0;
+  for(p = proc; p < &proc[NPROC]; p++) {
+    if(p->state != UNUSED){
+      free_num += 1;
+    }
+  }
+  return free_num;
+}
+
+
 // Allocate a page for each process's kernel stack.
 // Map it high in memory, followed by an invalid
 // guard page.
@@ -304,6 +316,7 @@ fork(void)
 
   // copy mask for trace
   np->mask = p->mask;
+
   // increment reference counts on open file descriptors.
   for(i = 0; i < NOFILE; i++)
     if(p->ofile[i])
